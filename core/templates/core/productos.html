@@ -1,0 +1,90 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+
+<script>
+  function eliminarProducto(id){
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Esta acción no se puede deshacer',
+      icon: 'question',
+      showCancelButton: true,
+      cancelButtonText:'No, cancelar',
+      confirmButtonText: 'Sí, eliminar',
+      reverseButtons: true
+    })
+    .then(function(result){
+      if(result.isConfirmed) {
+          window.location.href = "{% url 'productos' 'del' id %}"
+      }
+    })
+  }
+</script>
+
+
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <div class="card-body card p-5">
+
+        <br>
+        <h2 class="text-center my-4">Mantenedor de productos</h2>
+        <br>
+        {% if form %}
+        <form method="POST" action="" enctype="multipart/form-data" id="formprod">
+          <div class="form-group">
+            {% csrf_token %} {{ form | crispy }}
+        </div><br>
+          <button type="submit" class="btn btn-secondary" id="id_guardar">Guardar</button>
+          <a class="btn btn-success btnwidth" href="{% url 'productos' 'ins' -1 %}">Nuevo</a>
+          {% if id != '-1' %}
+          <a href="#" onclick="eliminarProducto( {{ id }} )" class="btn btn-danger">Eliminar</a>
+          {% endif %}
+        </form>
+        {% endif %}
+
+      <hr>
+      <h4>Listado de productos</h4>
+      <div class="table-responsive">
+        {% if list %}
+      <table class="table table-striped ">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Categoría</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Descuento subscriptor (%)</th>
+            <th scope="col">Descuento oferta (%)</th>
+            <th scope="col">Imagen</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for pro in list %}
+          <tr>
+            <th scope="row">{{ pro.idProducto }}</th>
+            <td> <a class="text-decoration-none" style="color: black;" href="{% url 'productos' 'upd' pro.idProducto %}">{{ pro.categoriaProducto}}</a></td>
+            <td>{{ pro.nombreProducto }}</td>
+            <td>{{ pro.descripcionProducto }}</td>
+            <td>${{ pro.precioProducto }}</td>
+            <td>{{ pro.descuentoSubP }}%</td>
+            <td>{{ pro.descuentoSubO }}%</td>
+            <td><img class="imagenchica" src="/media/{{ pro.imagenProducto }}" alt="Imagen del producto"></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
+  </div>
+</div>
+</div>
+</div>
+</div>
+          
+          
+{% endblock content %}

@@ -1,0 +1,54 @@
+
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="container my-5">
+  <h1 class="text-center mb-5">Administración</h1>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Mantenedor de Productos</h5>
+          <p class="card-text">Administra y controla los productos de tu tienda.</p>
+          <a href="{% url 'productos' 'ins' -1 %}" class="btn btn-secondary stretched-link">Ir al mantenedor</a>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Mantenedor de Usuarios</h5>
+          <p class="card-text">Administra y controla los usuarios de tu tienda.</p>
+          <a href="{% url 'usuarios'%}" class="btn btn-secondary stretched-link">Ir al mantenedor</a>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Mantenedor de Ventas</h5>
+          <p class="card-text">Administra y controla las ventas de tu tienda.</p>
+          <a href="{% url 'ventas'%}" class="btn btn-secondary stretched-link">Ir al mantenedor</a>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Mantenedor de Bodega</h5>
+          <p class="card-text">Administra y controla el stock de tu tienda.</p>
+          <a href="{% url 'bodega'%}" class="btn btn-secondary stretched-link">Ir al mantenedor</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  {% endblock content %}
+
+
+

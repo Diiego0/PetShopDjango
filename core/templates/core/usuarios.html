@@ -1,0 +1,147 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+        
+
+
+
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="text-center my-4">Mantenedor de usuarios</h2>
+
+            <form id="formuser" name="formuser">
+                <div class="form-group">
+                  <label for="id">ID</label>
+                  <input type="number" class="form-control" id="id" name="id">
+                </div>
+                <div class="form-group">
+                  <label>Tipo de usuario</label><br>
+                  <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" id="cliente" name="tipo" value="cliente" checked>
+                    <label class="form-check-label" for="cliente">Cliente</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" id="administrador" name="tipo" value="administrador">
+                    <label class="form-check-label" for="administrador">Administrador</label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="rut">RUT</label>
+                  <input type="number" class="form-control" id="rut" name="rut">
+                </div>
+                <div class="form-group">
+                  <label for="nombres">Nombres</label>
+                  <input type="text" class="form-control" id="nombres" name="nombres">
+                </div>
+                <div class="form-group">
+                  <label for="apellidos">Apellidos</label>
+                  <input type="text" class="form-control" id="apellidos" name="apellidos">
+                </div>
+                <div class="form-group">
+                  <label for="correo">Correo</label>
+                  <input type="email" class="form-control" id="correo" name="correo">
+                </div>
+                <div class="form-group">
+                  <label for="direccion">Dirección</label>
+                  <input type="text" class="form-control" id="direccion" name="direccion">
+                </div>
+                <div class="form-group form-check">
+                  <input type="checkbox" class="form-check-input" id="subscripcion" name="subscripcion">
+                  <label class="form-check-label" for="subscripcion">Subscripción</label>
+                </div>
+                <div class="form-group">
+                  <label for="password">Contraseña</label>
+                  <div class="input-group">
+                    <input type="password" class="form-control" id="password" name="password">
+                    <div class="input-group-append">
+                      <button class="btn btn-secondary" type="button" >Generar</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="imagen">Imagen</label>
+                  <input type="file" class="form-control-file" id="imagen" name="imagen">
+                </div>
+                <br>
+                <button type="submit" class="btn btn-secondary">Guardar</button>
+                <button type="reset" class="btn btn-success">Nuevo</button>
+                <button type="button" class="btn btn-danger" >Eliminar</button>
+              </form>
+
+
+              <hr>
+              <h4>Listado de Usuarios</h4>
+              <div class="table-responsive">
+
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Tipo</th>
+                    <th>RUT</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Correo</th>
+                    <th>Dirección</th>
+                    <th>Subscripción</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Cliente</td>
+                    <td>12.345.678-9</td>
+                    <td>Juan</td>
+                    <td>Pérez</td>
+                    <td>juan.perez@gmail.com</td>
+                    <td>Calle Falsa 123</td>
+                    <td>Sí</td>
+                    <td>
+                      <button class="btn btn-primary btn-sm">Editar</button>
+                      <button class="btn btn-danger btn-sm">Eliminar</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Administrador</td>
+                    <td>98.765.432-1</td>
+                    <td>María</td>
+                    <td>González</td>
+                    <td>maria.gonzalez@gmail.com</td>
+                    <td>Avenida Siempreviva 742</td>
+                    <td>No</td>
+                    <td>
+                      <button class="btn btn-primary btn-sm">Editar</button>
+                      <button class="btn btn-danger btn-sm">Eliminar</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Cliente</td>
+                    <td>11.223.344-5</td>
+                    <td>Pedro</td>
+                    <td>Rodríguez</td>
+                    <td>pedro.rodriguez@gmail.com</td>
+                    <td>Plaza del Sol 123</td>
+                    <td>No</td>
+                    <td>
+                      <button class="btn btn-primary btn-sm">Editar</button>
+                      <button class="btn btn-danger btn-sm">Eliminar</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+

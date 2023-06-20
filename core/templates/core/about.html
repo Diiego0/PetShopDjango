@@ -1,0 +1,49 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+      <div class="container mt-5">
+        <h1 class="text-center mb-4">Kuki Store</h1>
+        <p class="text-center mb-5">¡Todo lo que necesitas para tu mascota!</p>
+        <p class="text-center mb-5">¡Bienvenidos a Kuki Store! Donde encontrarás todo lo que necesitas para tu fiel amigo. Desde alimentos y juguetes hasta accesorios de moda para perros y gatos. Además, si te suscribes a nuestro boletín recibirás descuentos exclusivos y estarás al tanto de las últimas novedades en productos para mascotas. ¡Visítanos y sorpréndete con nuestra amplia variedad de productos!</p>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="card">
+              <img src="{% static 'core/img/Nosotros .jpg'%}" alt="Imagen de personas" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Rafael Cayuleo</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+              <img src="{% static 'core/img/Nosotros .jpg'%}" alt="Imagen de personas" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Felipe Fuentes</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+              <img src="{% static 'core/img/Nosotros .jpg'%}" alt="Imagen de personas" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Benjamin Henriquez</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+              <img src="{% static 'core/img/Nosotros .jpg'%}" alt="Imagen de personas" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Diego Orellana</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <br>
+    
+    {% endblock content %}

@@ -1,0 +1,52 @@
+
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h2 class="text-center my-4">Mis compras</h2>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col"># Boleta</th>
+              <th scope="col">Fecha venta</th>
+              <th scope="col">Fecha despacho</th>
+              <th scope="col">Fecha entrega</th>
+              <th scope="col">Monto total</th>
+              <th scope="col">Estado entrega</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">123456</th>
+              <td>01/01/2023</td>
+              <td>03/01/2023</td>
+              <td>10/01/2023</td>
+              <td>$100.00</td>
+              <td>En tránsito</td>
+              <td><a href="#" class="btn btn-primary">Ver detalles</a></td>
+            </tr>
+            <tr>
+              <th scope="row">123457</th>
+              <td>02/01/2023</td>
+              <td>04/01/2023</td>
+              <td>12/01/2023</td>
+              <td>$50.00</td>
+              <td>Entregado</td>
+              <td><a href="#" class="btn btn-primary">Ver detalles</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+
+{% endblock content %}

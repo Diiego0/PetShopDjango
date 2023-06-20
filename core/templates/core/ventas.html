@@ -1,0 +1,68 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+        <div class="container">
+            <h1>Historial de ventas</h1>
+            <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Número de boleta</th>
+                  <th>Fecha</th>
+                  <th>Nombre del cliente</th>
+                  <th>Subscripción</th>
+                  <th>Monto total</th>
+                  <th>Estado de entrega</th>
+                  <th>Detalles</th>
+                  <th>Cambiar estado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>001</td>
+                  <td>01/01/2022</td>
+                  <td>John Doe</td>
+                  <td>Sí</td>
+                  <td>$50.00</td>
+                  <td>Pendiente</td>
+                  <td><button class="btn btn-primary">Ver detalles</button></td>
+                  <td>
+                    <div class="btn-group" role="group" aria-label="Cambiar estado">
+                      <button type="button" class="btn btn-secondary">Anulado</button>
+                      <button type="button" class="btn btn-secondary">Vendido</button>
+                      <button type="button" class="btn btn-secondary">Despachado</button>
+                      <button type="button" class="btn btn-secondary">Entregado</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>002</td>
+                  <td>02/02/2022</td>
+                  <td>Jane Smith</td>
+                  <td>No</td>
+                  <td>$100.00</td>
+                  <td>Entregado</td>
+                  <td><button class="btn btn-primary">Ver detalles</button></td>
+                  <td>
+                    <div class="btn-group" role="group" aria-label="Cambiar estado">
+                      <button type="button" class="btn btn-secondary">Anulado</button>
+                      <button type="button" class="btn btn-secondary">Vendido</button>
+                      <button type="button" class="btn btn-secondary">Despachado</button>
+                      <button type="button" class="btn btn-secondary">Entregado</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+          </div>
+          
+
+          
+          
+          
+{% endblock content %}

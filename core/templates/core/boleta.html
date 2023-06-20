@@ -1,0 +1,75 @@
+
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+        <div class="container mt-3  ">
+            <h2>Detalle de la boleta 534</h2>
+            <hr>
+          
+            <div class="row">
+              <div class="col-md-8 ">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Categoría</th>
+                      <th>Producto</th>
+                      <th>Precio</th>
+                      <th>% Oferta</th>
+                      <th>% Desc Total</th>
+                      <th>Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Mascotas</td>
+                      <td>Pienso para perros</td>
+                      <td>$15.000</td>
+                      <td>5%</td>
+                      <td>10%</td>
+                      <td>$12.750</td>
+                    </tr>
+                    <tr>
+                      <td>Mascotas</td>
+                      <td>Cepillo para gatos</td>
+                      <td>$7.000</td>
+                      <td>0%</td>
+                      <td>0%</td>
+                      <td>$7.000</td>
+                    </tr>
+                    <tr>
+                      <td>Mascotas</td>
+                      <td>Juguete para perros</td>
+                      <td>$8.000</td>
+                      <td>0%</td>
+                      <td>0%</td>
+                      <td>$8.000</td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="5" class="text-right">Subtotal:</td>
+                      <td>$27.750</td>
+                    </tr>
+                    <tr>
+                      <td colspan="5" class="text-right">IVA (19%):</td>
+                      <td>$5.272,50</td>
+                    </tr>
+                    <tr>
+                      <td colspan="5" class="text-right">Total:</td>
+                      <td>$33.022,50</td>
+                    </tr>
+                  </tfoot>
+                </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          
+
+          
+          {% endblock content %}

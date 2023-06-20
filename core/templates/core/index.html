@@ -1,0 +1,82 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load custom_filters %}
+{% block content %}
+
+  <div id8iuog v8 ="myCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <a href="productos.html"><img src="{% static 'core/img/foto1.jpg'%}" class="img-fluid"></a>
+      </div>
+      <div class="carousel-item">
+        <a href="productos.html"><img src="{% static 'core/img/foto2.jpg'%}" class="img-fluid"></a>
+      </div>
+      <div class="carousel-item">
+        <a href="productos.html"><img src="{% static 'core/img/foto3.jpg'%}" class="img-fluid"></a>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Siguiente</span>
+    </button>
+  </div>
+
+
+  <div class="container px-4 px-lg-5 mt-5 ">
+    <h2 class="text-center my-4">Nuestros productos</h2>
+    {% if list %}
+
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+
+      {% for pro in list %}
+
+      <div class="col mb-5">
+        <div class="card" onmouseover="showDescription2(this)" onmouseout="hideDescription2(this)">
+          {% if pro.descuentoSubO > 0 %}
+          <div class="desc">-{{ pro.descuentoSubO }}%</div>
+          <img class="card-img-top" src="/media/{{ pro.imagenProducto }}" alt="Producto 2">
+          <div class="card-body">
+            <h5 class="card-title text-center truncate nombre">{{ pro.nombreProducto }}</h5>
+            <div class="precio"><small>Antes ${{ pro.precioProducto|calcular_precio_descuento:pro.descuentoSubO }}</small><span>$</span>{{ pro.precioProducto }}</div>
+            <p class="card-text"><small class="text-muted">Disponible</small></p>
+          </div>
+          {% else %}
+          <img class="card-img-top" src="/media/{{ pro.imagenProducto }}" alt="Producto 2">
+          <div class="card-body">
+            <h5 class="card-title text-center truncate nombre">{{ pro.nombreProducto }}</h5>
+            <div class="precio">${{ pro.precioProducto }}</div>
+            <p class="card-text"><small class="text-muted">Disponible</small></p>
+          </div>
+          {% endif %}
+          <div class="card-footer butoncito" style="display:none;">
+            <a href="{% url 'ficha_producto' pro.idProducto %}" class="btn btn-secondary">Añadir al carrito</a>
+            <i class="fa-solid fa-cart-shopping fa-xl"  style="color: #747474;"></i>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+    
+
+
+<br>
+  <div class="d-grid gap-2 col-6 mx-auto text-center">
+    <p> Por compras superiores a $20.000 ya estás concursando por una prenda de vestir, mira aquí los premios.</p>
+    <a href="{% url 'ropa'%}" class="btn btn-secondary" type="button">Oferta imperdible</a>
+  </div>
+<br>
+
+
+
+
+{% endblock content %}
+
+

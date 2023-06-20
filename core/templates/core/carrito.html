@@ -1,0 +1,66 @@
+
+
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Carrito de compras</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">%Subscriptor</th>
+                        <th scope="col">%Oferta</th>
+                        <th scope="col">%Desc total</th>
+                        <th scope="col">Descuentos</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Precio a pagar</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Perros</td>
+                        <td>Collar para perro</td>
+                        <td>20000</td>
+                        <td>0%</td>
+                        <td>0%</td>
+                        <td>0%</td>
+                        <td>$0</td>
+                        <td><input type="number" class="form-control" value="1"></td>
+                        <td>$20000</td>
+                        <td><button class="btn btn-danger">Eliminar</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Gatos</td>
+                        <td>Comida para gato</td>
+                        <td>20000</td>
+                        <td>0%</td>
+                        <td>0%</td>
+                        <td>0%</td>
+                        <td>$0</td>
+                        <td><input type="number" class="form-control" value="2"></td>
+                        <td>$20000</td>
+                        <td><button class="btn btn-danger">Eliminar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="text-right">
+                <h2>Total: $40</h2>
+                <button class="btn btn-secondary">Continuar comprando</button>
+                <button class="btn btn-success">Pagar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

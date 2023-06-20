@@ -1,0 +1,78 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-sm-10">
+        <h1>Registro de cliente</h1>
+        <br>
+        <div class="card-body card p-5">
+          <div class="col-md-12 text-center">
+            <img src="https://via.placeholder.com/300" alt="Imagen de perfil" class="img-fluid">
+          </div>
+          <form method="POST" id="formreg" class="row g-3">
+            <div class="col-12">
+              <label for="inputImage" class="form-label">Imagen de perfil</label>
+              <input type="file" class="form-control" id="inputImage" name="inputImage" accept="image/*">
+            </div>
+            <div class="col-md-6">
+              <label for="nombres" class="form-label">Nombres</label>
+              <input type="text" class="form-control" id="inputnombres4" name="inputnombres4">
+            </div>
+          <div class="col-md-6">
+              <label for="apellidos" class="form-label">Apellidos</label>
+              <input type="text" class="form-control" id="inputapellidos4" name="inputapellidos4">
+            </div>
+          <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Email</label>
+            <input type="email" class="form-control" id="inputEmail4" name="inputEmail4">
+          </div>
+          <div class="col-md-4">
+            <label for="rut" class="form-label">Rut</label>
+            <input type="number" class="form-control" id="inputrut4" name="inputrut4">
+          </div>
+          <div class="col-12">
+            <label for="inputAddress" class="form-label">Dirección</label>
+            <textarea class="form-control" id="floatingTextarea2" name="floatingTextarea2" style="height: 100px"></textarea>        
+          </div>
+          <div class="col-md-6">
+              <label for="inputPassword1" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" id="inputPassword1" name="inputPassword1">
+            </div>
+            <div class="col-md-6">
+              <label for="inputPassword4" class="form-label">Repetir contraseña</label>
+              <input type="password" class="form-control" id="inputPassword4" name="inputPassword4">
+            </div>
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck">
+              <label class="form-check-label" for="gridCheck">
+                Deseo subscribirme con un aporte de $3000 mensuales y obtener un 5% de descuento en mis compras.
+              </label>
+            </div>
+          </div>
+  
+          <div class="col-12">
+            <button type="submit" class="btn btn-secondary">Registrarse</button>
+            <button type="submit" class="btn btn-secondary">Limpiar</button>
+          </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+{% endblock content %}

@@ -1,0 +1,17 @@
+asgiref
+certifi
+charset-normalizer
+Django
+djangorestframework
+idna
+marshmallow
+packaging
+Pillow
+pytz
+requests
+sqlparse
+transbank-sdk
+tzdata
+urllib3
+crispy-bootstrap5
+django-crispy-forms

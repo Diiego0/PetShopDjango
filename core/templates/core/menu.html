@@ -1,0 +1,71 @@
+{% block content %}
+
+
+
+
+  <div class="container-lg">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+      
+      <a href="index.html" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+        <i class="fa-solid fa-cat fa-2xl" style="color: #747474;"> K u k i </i>
+      </a>
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="index.html" class="nav-link px-2 link-secondary">Inicio</a></li>
+        <li><a href="about.html" class="nav-link px-2 link-dark">Nosotros</a></li>
+        <li><a href="carrito.html" class="nav-link px-2 link-dark"><i class="fa-solid fa-cart-shopping fa-xl"></i></a></li>
+      </ul>
+  
+  
+  
+    <div class="col-md-3 text-end">
+      <button type="button" class="btn btn-outline-secondary me-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Ingresar
+      </button>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Bienvenido</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-5 pt-0">
+              <form method="POST" id="formulariologin" action="">
+                <br>
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control rounded-3" id="emaillog" name="emaillog" placeholder="name@example.com">
+                  <label for="email">Correo</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="password" class="form-control rounded-3" id="passwordlog" placeholder="Password" name="passwordlog">
+                  <label for="floatingPassword">Contraseña</label>
+                </div>
+                <button  class="w-100 mb-2 btn btn-lg rounded-3 btn-secondary" type="submit">Iniciar sesión</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a type="button" href="register.html" class="btn btn-secondary">Registrarse</a>
+    </div>
+  
+  
+  
+    <div class="dropdown text-end">
+      <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Invitado</a>
+      <ul class="dropdown-menu text-small" >
+        <li><a class="dropdown-item" href="miscompras.html">Historial de compras</a></li>
+        <li><a class="dropdown-item" href="misdatos.html">Mis datos</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="administracion.html">Administrar</a></li>
+        <li><a class="dropdown-item" href="misdatos.html">Mis datos</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="index.html">Cerrar sesión</a></li>
+      </ul>
+    </div>
+
+    </header>
+  </div>
+
+  
+  {% endblock %}

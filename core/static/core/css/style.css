@@ -1,0 +1,109 @@
+.text-base {
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.tile_button_container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.2rem;
+}
+
+.precio {
+  float: left;
+  width: 100%;
+  color: #faa13a;
+  font-size: 16px;
+  font-weight: 700;
+  height: 33px;
+}
+
+.precio small {
+  float: left;
+  width: 100%;
+  color: #999;
+  font-size: 12px;
+  line-height: 0;
+  font-weight: 500;
+  margin-top: -5px;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+body {
+  font-family: 'Poppins',sans-serif;
+}
+
+.desc {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: #f90707;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  z-index: 99;
+}
+
+.card {
+  margin: 3px;
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  height: 100%;
+}
+  
+.imagenchica {
+  height: 150px;
+  padding: 5px 5px 5px 5px;
+  max-width: 150px; 
+  margin: 0 auto; 
+}
+
+.prod {
+  float: left;
+  width: calc(20% - 16px);
+  position: relative;
+  border: 1px solid #ccc;
+  margin-right: 20px;
+  background: #fff;
+  transition: .3s all ease;
+  -webkit-transition: .3s all ease;
+  height: 350px;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.nombre {
+  float: left;
+  width: 100%;
+  color: #2e2e2e;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+  height: 32px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+} 
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  padding: 5px 5px 5px 5px;
+  max-width: 200px; 
+  margin: 0 auto; 
+}
+
+.error {
+  color: #dc3545;
+}
+  
+
+
+
