@@ -80,17 +80,35 @@
   <body>
     <main>
 
-    {% if messages %}
+      {% if messages %}
       {% for m in messages %}
-      <script>
-          Swal.fire({
-            title: 'Bien hecho',
-            text: "{{m}}",
-            icon: 'success'
-        })
-      </script>
-      {% endfor%}
-    {% endif %}
+          {% if m.tags == 'success' %}
+              <script>
+                  Swal.fire({
+                      title: 'Bien hecho',
+                      text: "{{ m }}",
+                      icon: 'success'
+                  })
+              </script>
+          {% elif m.tags == 'error' %}
+              <script>
+                  Swal.fire({
+                      title: 'Error',
+                      text: "{{ m }}",
+                      icon: 'error'
+                  })
+              </script>
+          {% else %}
+              <script>
+                  Swal.fire({
+                      title: 'Mensaje',
+                      text: "{{ m }}",
+                      icon: 'info'
+                  })
+              </script>
+          {% endif %}
+      {% endfor %}
+  {% endif %}
 
   {% block content %}
 

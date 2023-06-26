@@ -34,7 +34,7 @@
         <h2 class="text-center my-4">Mantenedor de productos</h2>
         <br>
         {% if form %}
-        <form id="formprod" name="formprod" method="POST" action="" enctype="multipart/form-data">
+        <form id="form" name="form" method="POST" action="" enctype="multipart/form-data">
           <div class="form-group">
             {% csrf_token %} {{ form | crispy }}
         </div><br>

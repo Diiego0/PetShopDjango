@@ -16,6 +16,9 @@ urlpatterns = [
     path('misdatos', misdatos, name="misdatos"),
     path('ficha_producto/<id>', ficha_producto, name="ficha_producto"),
     path('registro/', registro, name='registro'),
+    path('boleta/<nro_boleta>', boleta, name='boleta'),
+    path('cambiar_estado_boleta/<nro_boleta>/<estado>', cambiar_estado_boleta, name='cambiar_estado_boleta'),
+
 
 
 ]

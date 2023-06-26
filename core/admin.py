@@ -12,6 +12,13 @@ admin.site.register(Categoria)
 admin.site.register(Producto)
 admin.site.register(Bodega)
 admin.site.register(Perfil)
+admin.site.register(Boleta)
+
+class DetalleBoletaAdmin(admin.ModelAdmin):
+    list_display = ('id', 'boleta', 'bodega', 'precio_a_pagar')
+    # Agrega cualquier otra configuración que desees
+
+admin.site.register(DetalleBoleta, DetalleBoletaAdmin)
 
 class ActualizacionClienteFormAdmin(UserChangeForm):
     class Meta:

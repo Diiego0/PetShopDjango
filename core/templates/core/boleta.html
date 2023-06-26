@@ -1,66 +1,59 @@
 
 {% extends 'core/base.html' %}
 {% load static %}
+{% load custom_filters %}
 
 {% block content %}
 
 
 
-        <div class="container mt-3  ">
-            <h2>Detalle de la boleta 534</h2>
+        <div class="container mt-5  ">
+
+            <h2>Detalle de la boleta {{ boleta.nro_boleta }} </h2>
+            <h5>Venta: {{ boleta.fecha_venta|formatear_fecha }} | Despacho: {{ boleta.fecha_despacho|formatear_fecha }} | Entrega: {{ boleta.fecha_entrega|formatear_fecha }} </h4>
             <hr>
           
-            <div class="row">
-              <div class="col-md-8 ">
+            <div class="row justify-content-center">
+              <div class="col-md-10 ">
                 <table class="table table-hover">
                   <thead>
                     <tr>
                       <th>Categoría</th>
                       <th>Producto</th>
                       <th>Precio</th>
-                      <th>% Oferta</th>
+                      <th>Oferta</th>
                       <th>% Desc Total</th>
                       <th>Total</th>
+                      <th class="text-end"> Descuentos </th>
+                      <th class="text-end"> Precio a pagar </th>
                     </tr>
                   </thead>
                   <tbody>
+                    {% for item in detalle_boleta %}
                     <tr>
-                      <td>Mascotas</td>
-                      <td>Pienso para perros</td>
-                      <td>$15.000</td>
-                      <td>5%</td>
-                      <td>10%</td>
-                      <td>$12.750</td>
+                        <td> {{ item.bodega.categoriaProductoBode }} </td>
+                        <td> {{ item.bodega.nombreProducto }} </td>
+                        <td> {{ item.precio|formatear_dinero }} </td>
+                        <td> {{ item.descuento_subscriptor|formatear_porcentaje }} </td>
+                        <td> {{ item.descuento_oferta|formatear_porcentaje }} </td>
+                        <td> {{ item.descuento_total|formatear_porcentaje }} </td>
+                        <td class="text-end"> {{ item.descuentos|formatear_dinero }} </td>
+                        <td class="text-end"> {{ item.precio_a_pagar|formatear_dinero }} </td>
                     </tr>
-                    <tr>
-                      <td>Mascotas</td>
-                      <td>Cepillo para gatos</td>
-                      <td>$7.000</td>
-                      <td>0%</td>
-                      <td>0%</td>
-                      <td>$7.000</td>
-                    </tr>
-                    <tr>
-                      <td>Mascotas</td>
-                      <td>Juguete para perros</td>
-                      <td>$8.000</td>
-                      <td>0%</td>
-                      <td>0%</td>
-                      <td>$8.000</td>
-                    </tr>
+                {% endfor %}
                   </tbody>
                   <tfoot>
                     <tr>
                       <td colspan="5" class="text-right">Subtotal:</td>
-                      <td>$27.750</td>
+                      <td>{{ boleta.monto_sin_iva|formatear_dinero }}</td>
                     </tr>
                     <tr>
                       <td colspan="5" class="text-right">IVA (19%):</td>
-                      <td>$5.272,50</td>
+                      <td>{{ boleta.iva|formatear_dinero }}</td>
                     </tr>
                     <tr>
                       <td colspan="5" class="text-right">Total:</td>
-                      <td>$33.022,50</td>
+                      <td>{{ boleta.total_a_pagar|formatear_dinero }}</td>
                     </tr>
                   </tfoot>
                 </table>

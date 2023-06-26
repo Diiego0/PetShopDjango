@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
+from core.templatetags.custom_filters import formatear_dinero
+from django.db.models import Min
+
 
 
 # Create your models here.
@@ -21,18 +24,18 @@ class Producto(models.Model):
     descuentoSubP = models.IntegerField(null=False, blank=False, validators=[MinValueValidator(0), MaxValueValidator(100)], verbose_name="Descuento subscriptor")
     descuentoSubO = models.IntegerField(null=False, blank=False, validators=[MinValueValidator(0), MaxValueValidator(100)], verbose_name="Descuento oferta")
     imagenProducto = models.ImageField(upload_to="img/", default="sinfoto.jpg", null=False, blank=False, verbose_name="Imagen")
-
+    
     def __str__(self):
-        return self.nombreProducto
+        return f'{self.nombreProducto} (ID {self.idProducto})'
 
 class Bodega(models.Model):
     idProductoBode = models.AutoField(primary_key=True, verbose_name="Id de producto")
     categoriaProductoBode = models.ForeignKey(Categoria, on_delete=models.DO_NOTHING, verbose_name="Nombre de la categoría")
-    nombreProductoBode = models.CharField(max_length=80, blank=False, null=False, verbose_name="Nombre del producto")
+    nombreProducto = models.ForeignKey(Producto, on_delete=models.DO_NOTHING, verbose_name='Producto')
     stockProducto = models.IntegerField(null=False, blank=False, verbose_name="Stock producto")
 
     def __str__(self):
-        return self.nombreProductoBode
+        return str(self.nombreProducto)
 
 class Perfil(models.Model):
     USUARIO_CHOICES = [
@@ -124,7 +127,8 @@ class DetalleBoleta(models.Model):
     def __str__(self):
         minimo_id = DetalleBoleta.objects.filter(boleta_id=self.boleta.nro_boleta).aggregate(minimo_id=Min('id'))['minimo_id']
         nro_item = self.id - minimo_id + 1
-        return f'Boleta {self.boleta.nro_boleta} Item {nro_item} {self.bodega.producto.nombre} - {formatear_dinero(self.precio_a_pagar)}'
+        return f'Boleta {self.boleta.nro_boleta} Item {nro_item} {self.bodega.nombreProducto} - {formatear_dinero(self.precio_a_pagar)}'
+
     
     def acciones():
         return {
