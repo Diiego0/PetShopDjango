@@ -11,12 +11,11 @@ urlpatterns = [
     path('miscompras', miscompras, name="miscompras"),
     path('productos/<action>/<id>/', productos, name="productos"),
     path('ropa', ropa, name="ropa"),
-    path('register', register, name="register"),
-    path('usuarios', usuarios, name="usuarios"),
+    path('usuarios/<action>/<id>/', usuarios, name="usuarios"),
     path('ventas', ventas, name="ventas"),
     path('misdatos', misdatos, name="misdatos"),
     path('ficha_producto/<id>', ficha_producto, name="ficha_producto"),
-
+    path('registro/', registro, name='registro'),
 
 
 ]

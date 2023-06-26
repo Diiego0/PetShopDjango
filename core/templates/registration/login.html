@@ -1,0 +1,86 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+
+<style>
+  .form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-control {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + .75rem + 2px);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+    border-bottom-right-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+</style>
+<br><br>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card shadow rounded-3 my-3">
+        <div class="card-body p-4 p-sm-5">
+          <h5 class="card-title text-center mb-5 fw-light fs-5">Iniciar sesión</h1>
+
+          <form method="POST" action="{% url 'login' %}" class="form-signin">
+            <div>
+              {% csrf_token %}
+
+              {% if form.non_field_errors %}
+                <div class="alert alert-danger">
+                  {% for error in form.non_field_errors %}
+                    {{ error }}
+                  {% endfor %}
+                </div>
+              {% endif %}
+
+              <div class="mb-3">
+                <input type="text" class="form-control" id="id_username" name="username" placeholder="Nombre de usuario">
+                {% if form.username.errors %}
+                  <div class="alert alert-danger">
+                    {% for error in form.username.errors %}
+                      {{ error }}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+              
+              <div class="mb-3">
+                <input type="password" class="form-control" id="id_password" name="password" placeholder="Contraseña">
+                {% if form.password.errors %}
+                  <div class="alert alert-danger">
+                    {% for error in form.password.errors %}
+                      {{ error }}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+              <br>
+              <div class="text-center">
+                <button type="submit" class="btn btn-secondary">Iniciar sesión</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br><br>
+
+{% endblock %}

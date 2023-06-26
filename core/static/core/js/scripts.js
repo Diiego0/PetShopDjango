@@ -59,70 +59,98 @@ $(document).ready(function(){
 
 
 
+  $('#form').validate({ 
+    rules: {
+      'username': {
+        required: true,
+      },
+      'first_name': {
+        required: true,
+      },
+      'first_name': {
+        required: true,
+      },
+      'last_name': {
+        required: true,
+      },
+      'email': {
+        required: true,
+        email: true,
+      },
+      'rut': {
+        required: true,
+        rutChileno: true,
+      },
+      'direccion': {
+        required: true,
+      },
+      'password1': {
+        required: true,
+        minlength: 8,
+      },
+      'password2': {
+        required: true,
+        equalTo: '#id_password1'
+      }
+    },
+    messages: {
+      'username': {
+        required: 'Debe ingresar un nombre de usuario',
+      },
+      'first_name': {
+        required: 'Debe ingresar su nombre',
+      },
+      'last_name': {
+        required: 'Debe ingresar sus apellidos',
+      },
+      'email': {
+        required: 'Debe ingresar su correo',
+        email: 'El formato del correo no es válido',
+      },
+      'rut': {
+        required: 'Debe ingresar su RUT',
+        rutChileno: 'El formato del RUT no es válido',
+      },
+      'direccion': {
+        required: 'Debe ingresar su dirección',
+      },
+      'password1': {
+        required: 'Debe ingresar una contraseña',
+        minlength: 'La contraseña debe tener al menos 8 caracteres',
+      },
+      'password2': {
+        required: 'Debe ingresar una contraseña',
+        equalTo: 'Debe repetir la contraseña anterior'
+      }
+    },
+    errorPlacement: function(error, element) {
+      error.insertAfter(element); // Inserta el mensaje de error después del elemento
+      error.addClass('error-message'); // Aplica una clase al mensaje de error
+      //element.after('<br>'); 
+    },
+});
 
-$(document).ready(function() {
-    $("#formreg").validate({
-        rules: {
-          inputnombres4: {
-            required: true,
-          },
-          inputapellidos4: {
-            required: true,
-          },
-          inputEmail4: {
-            required: true,
-            email: true,
-          },
-          inputrut4: {
-            required: true,
-            rutChileno: true,
-          },
-          floatingTextarea2: {
-            required: true,
-          },
-          inputPassword1: {
-            required: true,
-            minlength: 6,
-          },
-          inputPassword4: {
-            required: true,
-            equalTo: "#inputPassword1",
-          },
-          inputImage: {
-            required: true,
-          },
-        }, // Fin de reglas
-        messages: {
-          inputnombres4: {
-            required: "Por favor ingresa tus nombres",
-          },
-          inputapellidos4: {
-            required: "Por favor ingresa tus apellidos",
-          },
-          inputEmail4: {
-            required: "Por favor ingresa tu email",
-            email: "Por favor ingresa un email válido",
-          },
-          inputrut4: {
-            required: "Por favor ingresa tu RUT",
-          },
-          floatingTextarea2: {
-            required: "Por favor ingresa tu dirección",
-          },
-          inputPassword1: {
-            required: "Por favor ingresa una contraseña",
-            minlength: "La contraseña debe tener al menos 6 caracteres",
-          },
-          inputPassword4: {
-            required: "Por favor confirma tu contraseña",
-            equalTo: "Las contraseñas no coinciden",
-          },
-          inputImage: {
-            required: "Por favor ingresa una imagen",
-          },
-        },
-      });
-  });
+
+
+
+
+
+$('#id_imagen').change(function() {
+  var input = this;
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      $('#registrarme-imagen').attr('src', e.target.result).show();
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+});
+
+
+
+
+
+
 
 $(document).ready(function () {
 
@@ -178,36 +206,36 @@ $(document).ready(function () {
 $(document).ready(function() {
   $("#formprod").validate({
       rules: {
-        productoId: {
+        idProducto: {
           required: true,
         },
-        nombre: {
+        nombreProducto: {
           required: true,
         },
-        descripcion: {
+        descripcionProducto: {
           required: true,
         },
-        precio: {
+        precioProducto: {
           required: true,
         },
-        imagen: {
+        imagenProducto: {
           required: true,
         },
       }, // Fin de reglas
       messages: {
-        productoId: {
+        idProducto: {
           required: "Por favor ingresa una ID",
         },
-        nombre: {
+        nombreProducto: {
           required: "Por favor ingresa un nombre",
         },
-        descripcion: {
+        descripcionProducto: {
           required: "Por favor ingresa una descripción",
         },
-        precio: {
+        precioProducto: {
           required: "Por favor ingresa un precio",
         },
-        imagen: {
+        imagenProducto: {
           required: "Por favor ingresa una imagen",
         },
       },
@@ -225,13 +253,13 @@ $(document).ready(function() {
           required: true,
           rutChileno: true,
         },
-        nombres: {
+        first_name: {
           required: true,
         },
-        apellidos: {
+        last_name: {
           required: true,
         },
-        correo: {
+        email: {
           required: true,
           email: true,
         },
@@ -253,13 +281,13 @@ $(document).ready(function() {
         rut: {
           required: "Por favor ingresa tu RUT",
         },
-        nombres: {
+        first_name: {
           required: "Por favor ingresa un nombre",
         },
-        apellidos: {
+        last_name: {
           required: "Por favor ingresa un apellido",
         },
-        correo: {
+        email: {
           required: "Por favor ingresa un correo",
           email: "Por favor ingresa un correo válido",
         },
@@ -307,7 +335,6 @@ $(document).ready(function() {
       },
       inputContraseña4: {
           required: true,
-          equalTo: "#inputContraseña1",
       },
   },
   messages: {
@@ -333,7 +360,6 @@ $(document).ready(function() {
       },
       inputContraseña4: {
           required: "Por favor confirma tu contraseña",
-          equalTo: "Las contraseñas no coinciden",
       },
   },
   });

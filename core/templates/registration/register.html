@@ -1,0 +1,93 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-sm-10">
+      <h1>Registro de cliente</h1>
+      <br>
+      <div class="card-body card p-5" >
+        <form method="POST" enctype="multipart/form-data" id="form">
+
+        {% csrf_token %}
+        <div class="col-md-12 text-center">
+            
+          {% if form.imagen.value %}
+            <img id="registrarme-imagen" src="/media/{{ form.imagen.value }}" style="  height: 300px;
+            object-fit: cover;
+            padding: 5px 5px 5px 5px;
+            max-width: 300px; 
+            margin: 0 auto; ">
+          {% else %}
+            <img id="registrarme-imagen" src="{% static 'core/img/Nosotros .jpg' %}" style="  height: 250px;
+            object-fit: cover;
+            padding: 5px 5px 5px 5px;
+            max-width: 250px; 
+            margin: 0 auto; ">
+          {% endif %}
+
+          {% if form.errors %}
+            <br>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              {{ form.errors }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endif %}
+        </div>
+          <br>
+        <div class="row">
+          <div class="form-row">
+            {% for field in form %}
+              <div class="form-group row mb-2">
+                <label for="{{ field.id_for_label }}" class="col-sm-5 col-form-label">
+                  {{ field.label }}
+                </label>
+                <div class="col-sm-7">
+                  {{ field }}
+                </div>
+              </div>
+            {% endfor %}
+            <p>Deseo subscribirme con un aporte de $3000 mensuales y obtener un 5% de descuento en mis compras.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-2 mb-3">
+          <button type="submit" class="btn btn-secondary"> Registrarme </button>
+          <button type="reset" class="btn btn-secondary"> Limpiar </button>
+        </div>
+
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endfor %}
+        {% endif %}
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+{% endblock content %}

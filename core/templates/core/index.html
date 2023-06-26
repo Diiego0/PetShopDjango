@@ -42,7 +42,7 @@
           <img class="card-img-top" src="/media/{{ pro.imagenProducto }}" alt="Producto 2">
           <div class="card-body">
             <h5 class="card-title text-center truncate nombre">{{ pro.nombreProducto }}</h5>
-            <div class="precio"><small>Antes ${{ pro.precioProducto|calcular_precio_descuento:pro.descuentoSubO }}</small><span>$</span>{{ pro.precioProducto }}</div>
+            <div class="precio"><small>Antes ${{ pro.precioProducto }}</small><span>$</span>{{ pro.precioProducto|calcular_precio_descuento:pro.descuentoSubO }}</div>
             <p class="card-text"><small class="text-muted">Disponible</small></p>
           </div>
           {% else %}
