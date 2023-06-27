@@ -173,21 +173,31 @@ def misdatos(request):
 def ficha_producto(request, id):
     producto = Producto.objects.get(idProducto=id)
     bodega = Bodega.objects.filter(nombreProducto=producto).first()
-    
+
+    # Obtener perfil del usuario logueado
+    perfil = request.user.perfil if hasattr(request.user, 'perfil') else None
+
+    # Verificar si el perfil tiene la subscripción activa
+    if perfil and perfil.subscrito:
+        descuento_subscripcion = 5
+    else:
+        descuento_subscripcion = 0
+
     if bodega is not None:
         stock_disponible = bodega.stockProducto
         productos_relacionados = Producto.objects.exclude(idProducto=id).filter(bodega__categoriaProductoBode=bodega.categoriaProductoBode).order_by('?')[:5]
     else:
         stock_disponible = 0
         productos_relacionados = Producto.objects.exclude(idProducto=id).order_by('?')[:5]
-    
+
     data = {
         "producto": producto,
         "bodega": bodega,
         "stock_disponible": stock_disponible,
-        "productos_relacionados": productos_relacionados
+        "productos_relacionados": productos_relacionados,
+        "descuento_subscripcion": descuento_subscripcion
     }
-    
+
     return render(request, "core/ficha.html", data)
  
 def registro(request):

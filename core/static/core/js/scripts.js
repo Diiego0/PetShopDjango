@@ -203,6 +203,10 @@ $(document).ready(function () {
 });
 
 
+
+
+
+
 $(document).ready(function() {
   $("#formprod").validate({
       rules: {

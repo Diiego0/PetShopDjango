@@ -5,23 +5,53 @@
 
         
 <script>
-    function eliminarUser(id){
-      Swal.fire({
-        title: '¿Estás seguro?',
-        text: 'Esta acción no se puede deshacer',
-        icon: 'question',
-        showCancelButton: true,
-        cancelButtonText:'No, cancelar',
-        confirmButtonText: 'Sí, eliminar',
-        reverseButtons: true
-      })
-      .then(function(result){
-        if(result.isConfirmed) {
-            window.location.href = "{% url 'usuarios' 'del' id %}"
-        }
-      })
+  function eliminarUser(id) {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Esta acción no se puede deshacer',
+      icon: 'question',
+      showCancelButton: true,
+      cancelButtonText: 'No, cancelar',
+      confirmButtonText: 'Sí, eliminar',
+      reverseButtons: true
+    })
+    .then(function(result) {
+      if (result.isConfirmed) {
+        window.location.href = "{% url 'usuarios' 'del' id %}"
+      }
+    });
+
+    const passwordFields = document.querySelectorAll('#formuser input[type="password"]');
+    passwordFields.forEach(field => {
+      field.readOnly = true;
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var generarContrasenaBtn = document.getElementById('generar-contrasena');
+    generarContrasenaBtn.addEventListener('click', function() {
+      var contrasena = generarContrasenaAleatoria();
+      document.getElementById('id_password1').value = contrasena;
+      document.getElementById('id_password2').value = contrasena;
+    });
+
+    function generarContrasenaAleatoria() {
+      var caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      var longitud = 10;
+      var contrasena = '';
+      for (var i = 0; i < longitud; i++) {
+        var indice = Math.floor(Math.random() * caracteres.length);
+        contrasena += caracteres.charAt(indice);
+      }
+      return contrasena;
     }
-  </script>
+
+    const passwordFields = document.querySelectorAll('#formuser input[type="password"]');
+    passwordFields.forEach(field => {
+      field.readOnly = true;
+    });
+  });
+</script>
 
 
 
@@ -32,12 +62,13 @@
           <h2 class="text-center my-4">Mantenedor de usuarios</h2>
 
           {% if action == 'ins' %}
-              <form id="formuser" name="formuser" action="{% url 'registro' %}" method="POST" enctype="multipart/form-data" >
+              <form id="formuser" name="formuser" action="{% url 'usuarios' action='ins' id='-1' %}" method="POST" enctype="multipart/form-data" >
                   {% csrf_token %}
                   {{ form.as_p }}
                   <br>
                   <button type="submit" class="btn btn-secondary">Guardar</button>
                   <button type="reset" class="btn btn-secondary"> Limpiar </button>
+                  <button type="button" class="btn btn-primary" id="generar-contrasena">Generar contraseña</button>
               </form>
           {% endif %}
 
@@ -59,6 +90,7 @@
                 <thead>
                   <tr>
                       <th>ID</th>
+                      <th>Nombre de usuario</th>
                       <th>Tipo</th>
                       <th>RUT</th>
                       <th>Nombres</th>
@@ -73,6 +105,7 @@
                   {% for usuario in list %}
                   <tr>
                       <td>{{ usuario.id }}</td>
+                      <td>{{ usuario.username }}</td>
                       <td>{{ usuario.perfil.tipo_usuario }}</td>
                       <td>{{ usuario.perfil.rut }}</td>
                       <td>{{ usuario.first_name }}</td>
@@ -86,7 +119,7 @@
                       {% endif %}
                       <td>
                           <a href="{% url 'usuarios' action='upd' id=usuario.id %}" class="btn btn-primary btn-sm">Editar</a>
-                          <a href="#" onclick="eliminarUser( {{ id }} )" class="btn btn-danger btn-sm">Eliminar</a>
+                          <a href="{% url 'usuarios' action='del' id=usuario.id %}" class="btn btn-danger btn-sm">Eliminar</a>
                       </td>
                   </tr>
                   {% endfor %}

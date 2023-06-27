@@ -28,6 +28,10 @@
                     <span>${{ producto.precioProducto }}</span>
                 </div>
                 {% endif %}
+                <!-- Mostrar descuento de subscripción -->
+                {% if descuento_subscripcion > 0 %}
+                    <div class="small mb-1">Descuento de subscripción {{ descuento_subscripcion }}% al finalizar su compra</div>
+                {% endif %}
                 <p class="lead">{{ producto.descripcionProducto }}</p>
                 {% if stock_disponible > 0 %}
                     <div class="small mb-1">{{ stock_disponible }} disponibles</div>
