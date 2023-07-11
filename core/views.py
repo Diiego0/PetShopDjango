@@ -15,10 +15,10 @@ def index(request):
 
     for producto in productos:
         bodega = Bodega.objects.filter(nombreProducto=producto).first()
-        if bodega is not None:
-            stock_disponible = bodega.stockProducto
+        if bodega is not None and bodega.stockProducto > 0:
+            stock_disponible = "Disponible"
         else:
-            stock_disponible = 0
+            stock_disponible = "No disponible"
 
         producto_data = {
             "producto": producto,
@@ -28,6 +28,7 @@ def index(request):
         data.append(producto_data)
 
     return render(request, "core/index.html", {"productos": data})
+
 
 def about(request):
     return render(request, "core/about.html")
@@ -44,21 +45,15 @@ def bodega(request):
             categoria = form.cleaned_data['categoriaProducto']
             nombre = form.cleaned_data['nombreProducto']
             stock = form.cleaned_data['stockProducto']
-            id_producto = form.cleaned_data['nombreProducto'].idProducto
 
             try:
-                # Validar si ya existe un producto con el mismo ID
-                if Bodega.objects.filter(idProductoBode=id_producto).exists():
-                    messages.error(request, "Ya existe un producto con el mismo ID")
-                    return redirect('bodega')
-
-                bodega = Bodega(
-                    categoriaProductoBode=categoria,
-                    nombreProducto=nombre,
-                    stockProducto=stock,
-                    idProductoBode=id_producto
-                )
-                bodega.save()
+                for _ in range(stock):
+                    bodega = Bodega(
+                        categoriaProductoBode=categoria,
+                        nombreProducto=nombre,
+                        stockProducto=1
+                    )
+                    bodega.save()
 
                 messages.success(request, "El producto fue agregado correctamente a la bodega")
                 return redirect('bodega')
@@ -79,6 +74,9 @@ def bodega(request):
         return redirect('bodega')
 
     return render(request, "core/bodega.html", {'form': form, 'lista_productos': lista_productos})
+
+
+
 
 @login_required
 def carrito(request):
@@ -172,7 +170,7 @@ def misdatos(request):
 
 def ficha_producto(request, id):
     producto = Producto.objects.get(idProducto=id)
-    bodega = Bodega.objects.filter(nombreProducto=producto).first()
+    bodega = Bodega.objects.filter(nombreProducto=producto)
 
     # Obtener perfil del usuario logueado
     perfil = request.user.perfil if hasattr(request.user, 'perfil') else None
@@ -183,9 +181,9 @@ def ficha_producto(request, id):
     else:
         descuento_subscripcion = 0
 
-    if bodega is not None:
-        stock_disponible = bodega.stockProducto
-        productos_relacionados = Producto.objects.exclude(idProducto=id).filter(bodega__categoriaProductoBode=bodega.categoriaProductoBode).order_by('?')[:5]
+    if bodega.exists():
+        stock_disponible = bodega.count()
+        productos_relacionados = Producto.objects.exclude(idProducto=id).filter(bodega__categoriaProductoBode=bodega[0].categoriaProductoBode).order_by('?')[:5]
     else:
         stock_disponible = 0
         productos_relacionados = Producto.objects.exclude(idProducto=id).order_by('?')[:5]
@@ -199,6 +197,7 @@ def ficha_producto(request, id):
     }
 
     return render(request, "core/ficha.html", data)
+
  
 def registro(request):
 

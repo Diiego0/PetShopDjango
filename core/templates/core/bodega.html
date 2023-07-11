@@ -29,7 +29,7 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>ID Producto</th>
+                  <th>ID Bodega</th>
                   <th>Categoría</th>
                   <th>Producto</th>
                   <th>Estado</th>
@@ -39,7 +39,7 @@
               <tbody>
                 {% for pro in lista_productos   %}
                 <tr>
-                  <td>1</td>
+                  <td>{{ pro.idProductoBode }}</td>
                   <td>{{ pro.categoriaProductoBode }}</td>
                   <td>{{ pro.nombreProducto }}</td>
                   <td>En stock</td>

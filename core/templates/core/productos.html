@@ -53,8 +53,8 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Categoría</th>
                 <th scope="col">Nombre</th>
+                <th scope="col">Categoría</th>
                 <th scope="col">Descripción</th>
                 <th scope="col">Precio</th>
                 <th scope="col">Descuento subscriptor (%)</th>
@@ -66,8 +66,8 @@
               {% for pro in list %}
               <tr>
                 <th scope="row">{{ pro.idProducto }}</th>
-                <td> <a class="text-decoration-none" style="color: black;" href="{% url 'productos' 'upd' pro.idProducto %}">{{ pro.categoriaProducto}}</a></td>
-                <td>{{ pro.nombreProducto }}</td>
+                <td> <a style="color: rgb(255, 0, 0);" href="{% url 'productos' 'upd' pro.idProducto %}">{{ pro.nombreProducto}}</a></td>
+                <td>{{ pro.categoriaProducto }}</td>
                 <td>{{ pro.descripcionProducto }}</td>
                 <td>${{ pro.precioProducto }}</td>
                 <td>{{ pro.descuentoSubP }}%</td>

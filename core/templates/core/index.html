@@ -40,8 +40,8 @@
                     <h5 class="card-title text-center truncate nombre">{{ producto.producto.nombreProducto }}</h5>
                     <div class="precio"><small>Antes ${{ producto.producto.precioProducto }}</small><span>$</span>{{ producto.producto.precioProducto|calcular_precio_descuento:producto.producto.descuentoSubO }}</div>
                     <p class="card-text">
-                        {% if producto.stock_disponible > 0 %}
-                        <small class="text-muted">{{ producto.stock_disponible }} disponibles</small>
+                        {% if producto.stock_disponible == "Disponible" %}
+                        <small class="text-muted">Disponible</small>
                         {% else %}
                         <small class="text-muted">Sin stock</small>
                         {% endif %}
@@ -53,8 +53,8 @@
                     <h5 class="card-title text-center truncate nombre">{{ producto.producto.nombreProducto }}</h5>
                     <div class="precio">${{ producto.producto.precioProducto }}</div>
                     <p class="card-text">
-                        {% if producto.stock_disponible > 0 %}
-                        <small class="text-muted">{{ producto.stock_disponible }} disponibles</small>
+                        {% if producto.stock_disponible == "Disponible" %}
+                        <small class="text-muted">Disponible</small>
                         {% else %}
                         <small class="text-muted">Sin stock</small>
                         {% endif %}
@@ -69,9 +69,9 @@
         </div>
         {% endfor %}
     </div>
-    </div>
     {% endif %}
 </div>
+
 
 <br>
   <div class="d-grid gap-2 col-6 mx-auto text-center">
